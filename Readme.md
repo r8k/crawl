@@ -1,5 +1,5 @@
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/r8k/crawl)](https://goreportcard.com/badge/github.com/r8k/crawl)
+[![Go Report Card](https://goreportcard.com/badge/github.com/r8k/crawl)](https://goreportcard.com/badge/github.com/r8k/crawl) [![Build Status](https://travis-ci.org/r8k/crawl.svg)](https://travis-ci.org/r8k/crawl)
 
 ## gocrawler [1]
 

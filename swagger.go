@@ -8,7 +8,7 @@ import "net/http"
 import "html/template"
 import "github.com/labstack/echo"
 
-// swagger yaml template
+// Template for swagger yaml
 type Template struct {
 	templates *template.Template
 }

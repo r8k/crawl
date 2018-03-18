@@ -33,7 +33,7 @@ const (
 // relative pathof robots.txt at the domain level
 var robotsTxtParsedPath, _ = url.Parse("/robots.txt")
 
-// error definitions
+// ErrDomainAlreadyRegistered is used when domain already exists
 var ErrDomainAlreadyRegistered = errors.New("domain is already registered/crawled")
 
 // normalises relative URLs to absolute URLs
@@ -88,7 +88,7 @@ func getTitleForPage(doc io.ReadCloser) (string, error) {
 	return "", nil
 }
 
-// resource describes a web page and it's nodes
+// Resource describes a web page and it's nodes
 type Resource struct {
 	// mutex
 	sync.Mutex
@@ -121,7 +121,7 @@ type Resource struct {
 	LastFetched time.Time `json:"_"`
 }
 
-// queue is a task queue for crawlers
+// Queue is a task queue for crawlers
 type Queue struct {
 	// track the state of queue, so workers
 	// need not try to receive tasks from a
@@ -144,7 +144,7 @@ type Logger interface {
 	Printf(format string, v ...interface{})
 }
 
-// crawler is a collection of workers
+// Crawler is a collection of workers
 // that crawl their respective domains
 type Crawler struct {
 	// mutex

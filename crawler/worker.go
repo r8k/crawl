@@ -8,7 +8,7 @@ import "net/url"
 import "encoding/json"
 import "github.com/temoto/robotstxt-go"
 
-// type to describe worker status
+// WorkerStatus is used to describe worker status
 type WorkerStatus int
 
 // worker status types
@@ -44,7 +44,7 @@ func (s WorkerStatus) MarshalJSON() ([]byte, error) {
 	return nil, fmt.Errorf("Invalid Status: %d", s)
 }
 
-// workers are crawlers specific to a domain
+// Worker is a crawler specific to a domain
 type Worker struct {
 	// inherit wg
 	sync.WaitGroup
@@ -89,7 +89,7 @@ func (w *Worker) visited(uri string) bool {
 	return crawled
 }
 
-// Done describes the worker's status
+// Status describes the worker's status
 func (w *Worker) Status() WorkerStatus {
 	return w.status
 }

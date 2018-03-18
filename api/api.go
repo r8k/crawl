@@ -7,12 +7,12 @@ import "net/http"
 import "github.com/labstack/echo"
 import "github.com/r8k/crawl/crawler"
 
-// api handler struct
+// Handler is used as api.handler
 type Handler struct {
 	Crawler *crawler.Crawler
 }
 
-// domain struct for using in request & response
+// Domain struct for using in request & response
 type Domain struct {
 	Domain string               `json:"domain"`
 	Depth  int                  `json:"depth,omitempty"`

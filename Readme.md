@@ -1,3 +1,6 @@
+
+[![Go Report Card](https://goreportcard.com/badge/github.com/r8k/crawl)](https://goreportcard.com/badge/github.com/r8k/crawl)
+
 ## gocrawler [1]
 
 `gocrawler` is an API layer, to crawl domains. Crawler adds a domain into a `worker` queue configured with a given `depth`, so that crawling is stopped after the `depth`. Crawling is restricted to the same domain, since crawling external domains (in addition to the requested domain) can go into a ~infinite loop, for e.g. when the crawling request is received for `https://google.com`, any child links outside of `google.com` are not added back to the task queue.

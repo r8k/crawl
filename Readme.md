@@ -42,7 +42,7 @@ Accessing `help` is just an argument away
 
 ## API Docs
 
-API Docs are available at `http://127.0.0.1:8080/docs`, assuming that you have started `crawler` with flags `-a 127.0.0.1 -p 8080`
+API Docs are available at `http://127.0.0.1:8080/docs`, assuming that you have started `gocrawler` with flags `-a 127.0.0.1 -p 8080`
 
 ## Testing
 

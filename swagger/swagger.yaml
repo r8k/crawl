@@ -1,0 +1,115 @@
+swagger: "2.0"
+info:
+  description: "This is a crawler server. `crawler` is an API layer, to crawl domains. The Crawler adds a domain into a `worker` queue configured with a given `depth`, so that the crawling is stopped after the `depth`."
+  version: "0.1.1"
+  title: "Crawler API"
+host: "{{ .Host }}:{{ .Port }}"
+basePath: "/api"
+schemes:
+- "http"
+paths:
+  /domains:
+    post:
+      summary: "Add a Domain for Crawling"
+      operationId: "addDomain"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Domain object that needs to be crawled"
+        required: true
+        schema:
+          $ref: "#/definitions/Domain"
+      responses:
+        202:
+          description: "accepted for processing; check the Status API for Domain Status"
+          schema:
+            $ref: "#/definitions/Domain"
+        400:
+          description: "Bad Request, check the input payload"
+        415:
+          description: "Unsupported Media Type; accepts only - application/json"
+  /domains/{domainName}:
+    get:
+      summary: "Get Domain by Domain Name"
+      description: "Returns the crawled response"
+      operationId: "getDomainById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "domainName"
+        in: "path"
+        description: "URL encoded Domain"
+        required: true
+        type: "string"
+        format: "string"
+      responses:
+        200:
+          description: "successful response"
+          schema:
+            $ref: "#/definitions/Node"
+        400:
+          description: "Bad Request, check the URL encoding of domain"
+        404:
+          description: "Domain not found"
+  /domains/{domainName}/status:
+    get:
+      summary: "fetch the crawling status of domain"
+      operationId: "getDomainStatusById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "domainName"
+        in: "path"
+        description: "URL encoded Domain"
+        required: true
+        type: "string"
+        format: "string"
+      responses:
+        200:
+          description: "successful response"
+          schema:
+            $ref: "#/definitions/Domain"
+        400:
+          description: "Bad Request, check the URL encoding of domain"
+        404:
+          description: "Domain not found"
+definitions:
+  Domain:
+    type: "object"
+    required:
+    - "domain"
+    properties:
+      domain:
+        type: "string"
+        format: "string"
+      depth:
+        type: "integer"
+        format: "int64"
+        example: 5
+  Node:
+    type: "array"
+    items:
+      $ref: "#/definitions/Nodes"
+  Nodes:
+    type: "object"
+    required:
+    - "url"
+    - "title"
+    - "nodes"
+    properties:
+      url:
+        type: "string"
+        format: "string"
+        example: "http://google.com/page1"
+      title:
+        type: "string"
+        format: "string"
+        example: "Example Title"
+      nodes:
+        type: "array"
+        items:
+          $ref: "#/definitions/Nodes"

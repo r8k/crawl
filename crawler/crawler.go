@@ -27,7 +27,7 @@ const (
 	DefaultComplyWithRobotPolicy = true
 
 	// DefaultUserAgent is the default user agent string in HTTPRequest
-	DefaultUserAgent = "GoCrawler/v0.1 (+https://github.com/qantas/gocrawler)"
+	DefaultUserAgent = "GoCrawler/v0.1 (+https://github.com/q/gocrawler)"
 )
 
 // relative pathof robots.txt at the domain level

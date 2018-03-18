@@ -5,6 +5,7 @@
  * `crawler` is concurrent safe, utilises [goroutines](https://gobyexample.com/goroutines) to achieve concurrency
  * `crawler` uses [Channels](https://gobyexample.com/channels) to pass references to data between goroutines
  * `crawler` uses [Channels](https://gobyexample.com/channels) to achieve [throttled](https://github.com/golang/go/wiki/RateLimiting) concurrency
+ * uses `robots.txt` & adheres to the policies of robots.txt exclusion [standard](https://en.wikipedia.org/wiki/Robots_exclusion_standard)
 
 ## Getting started
 
